@@ -11,3 +11,12 @@ Finally, as software engineers, we are asked to make more complex decisions with
 
 # Definition: 
   A Software Engineer is someone that is capable of designing a project, including it's development time, scale and cost, develop and implement, maintain, test and evaluate such project.   
+  The proccess of developing a large scale software can be defined into 6 steps:  
+   - **Requirements:** Defining the *functional*, *non-functional* and *domain* requirements.  
+   - **Design:** Idealize the internal components, properties, interfaces, relationships and interactions of all the systems of the project.  
+   - **Construction:** The development or implementation of the project.  
+   - **Testing:** Validation of the software's capabilities and usability.  
+   - **Analysis:** Validation of some of the software properties such as performance, robustness, and security.  
+   - **Maintenance:** Providing cost-effective support after shipping the software product.  
+
+The role of a Software Engineer or Software Engineering team, is to successfully implement those steps to create a software.

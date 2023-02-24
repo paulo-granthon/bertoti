@@ -36,7 +36,7 @@ The role of a Software Engineer or Software Engineering team, is to successfully
     
   ### 2.3. Name 2 examples of Trade-Offs in Non-Funcional Requirements:  
    - **Flexibility vs. Simplicity**. Some systems need to have a lot of flexibility and expandability built into them because you know you’re starting with the kernel of an idea and it’s going to get bigger. Others simply require a straightforward implementation with repeated reminders of YAGNI (You Ain’t Gonna Need It).  
-   - **Space vs. Time**. If time is of the essence then you’ll want to start pulling tricks like pre-computing possible values similar to what OLAP cubes do. Ever wonder how you can report on billions of rows across a range of dimensions so quickly? The aggregations are precomputed so that by the time you ask, the data is ready for you (or very close). On the other hand, you may need to minimize space and can afford some time which means you’ll be looking at compression and normalization to minimize redundant storage.  
+   - **Space vs. Time**. If time is of the essence then you’ll want to start pulling tricks like pre-computing possible values similar to what OLAP (Online analytical processing) cubes do. Ever wonder how you can report on billions of rows across a range of dimensions so quickly? The aggregations are precomputed so that by the time you ask, the data is ready for you (or very close). On the other hand, you may need to minimize space and can afford some time which means you’ll be looking at compression and normalization to minimize redundant storage.  
 
   
   

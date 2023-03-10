@@ -7,7 +7,7 @@ public class Estoque {
     public List<Produto> buscaProdutoNome (String nome) {
         List<Produto> result = new ArrayList<Produto>();
         for (Produto produto : produtos) {
-            if produto.name == nome { 
+            if produto.getName() == nome { 
                 result.add(produto);
             }
         }

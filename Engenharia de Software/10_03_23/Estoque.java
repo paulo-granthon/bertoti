@@ -1,5 +1,5 @@
 public class Estoque {
-    private List<Produto> produtos;
+    private List<Produto> produtos = new List<Produto>();
 
     public void addProduto (Produto produto) {
         produtos.add(produto);

@@ -3,4 +3,7 @@ public class Produto {
     public Produto (String name) {
         this.name = name;
     }
+    public String getName () {
+        return name;
+    }
 }

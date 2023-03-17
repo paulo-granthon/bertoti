@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+
 public class Estoque {
     private List<Produto> produtos = new ArrayList<Produto>();
 
@@ -7,7 +10,7 @@ public class Estoque {
     public List<Produto> buscaProdutoNome (String nome) {
         List<Produto> result = new ArrayList<Produto>();
         for (Produto produto : produtos) {
-            if produto.getName().equals(nome) { 
+            if (produto.getName().equals(nome)) { 
                 result.add(produto);
             }
         }

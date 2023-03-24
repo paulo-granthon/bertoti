@@ -10,7 +10,7 @@ public class Loja {
     }
 
     public void cadastrarUsuario (Usuario usuario) {
-        if (!verificarUsuarioExist()) return;
+        if (!verificarUsuarioExist(usuario.getEmail())) return;
         usuarios.add(usuario);
     }
 }

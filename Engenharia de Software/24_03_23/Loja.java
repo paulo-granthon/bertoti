@@ -5,7 +5,7 @@ public class Loja {
     List<Usuario> usuarios = new ArrayList<Usuario>();
 
     public boolean verificarUsuarioExist (String email) {
-        for (Usuario user : usuarios) if (user.getEmail().Equals(email)) return false;
+        for (Usuario user : usuarios) if (user.getEmail().equals(email)) return false;
         return true;
     }
 

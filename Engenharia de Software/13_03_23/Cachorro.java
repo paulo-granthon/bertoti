@@ -55,6 +55,15 @@ public class Cachorro {
         return true;
     }
 
+    public void seCoçar () {
+        int pulga_index = -1;
+        int min_hunger = Integer.MAX_VALUE;
+        for (int i = 0; i < pulgas.size(); i++) {
+            if (pulgas.get(i).hunger < min_hunger) pulga_index = i; 
+        }
+        if (pulga_index >= 0) pulgas.remove(pulga_index);
+    }
+
     public void changeHumor (int offset) {
         happiness += offset;
     }

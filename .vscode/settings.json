@@ -1,0 +1,9 @@
+{
+    "java.dependency.syncWithFolderExplorer": false,
+    "java.project.sourcePaths": [
+        "Engenharia de Software\\pulgas\\src"
+    ],
+    "java.project.referencedLibraries": [
+        "Engenharia de Software\\pulgas\\lib/**/*.jar"
+    ]
+}

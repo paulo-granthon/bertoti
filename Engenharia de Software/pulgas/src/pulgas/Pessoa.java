@@ -1,0 +1,26 @@
+package pulgas;
+
+import java.util.List;
+import java.util.ArrayList;
+
+public class Pessoa {
+    String nome;
+    List<Cachorro> cachorros = new ArrayList<Cachorro>();
+
+    public Pessoa(String nome) {
+        this.nome = nome;
+    }
+
+    public void adotar (Cachorro c) {
+        if (c.serAdotado(this)) cachorros.add(c);
+    }
+
+    public void fazerCarinho (Cachorro c) {
+        c.receberCarinho(this);
+    }
+
+    public void darBanho (Cachorro c) {
+        c.tomarBanho(this);
+    }
+    
+}

@@ -50,9 +50,9 @@ public class Shampoo {
         };
         return new Shampoo(
             names[random.nextInt(101) % names.length],
-            random.nextInt(1, 13),
-            random.nextDouble(0.1, 4.5),
-            random.nextDouble(0.1, 4.5)
+            random.nextInt(13 - 1) + 1,
+            (random.nextDouble() % 4.5) + 0.1,
+            (random.nextDouble() % 4.5) + 0.1
         );
     }
     

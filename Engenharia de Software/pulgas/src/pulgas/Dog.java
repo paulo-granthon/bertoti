@@ -14,7 +14,7 @@ public class Dog {
     public Dog(Random random) {
         this.name = Names.RandomName(random);
         this.race = Race.randomRace(random);
-        this.happiness = random.nextInt(30, 71);
+        this.happiness = random.nextInt(71 - 30) + 30;
     }
 
     public Dog(String nome, Race race) {
@@ -28,11 +28,12 @@ public class Dog {
             flee(yard);
             return false;
         }
-        for (Flea pulga : pulgas) {
-            if (!pulga.update(yard, random)) {
-                pulgas.remove(pulga);
-                yard.addFlea(pulga);
-            }
+        for (int i = 0; i < pulgas.size(); i++) {
+            Flea pulga = pulgas.get(i);
+            if (pulga.update(yard, random)) continue;
+            pulgas.remove(pulga);
+            yard.addFlea(pulga);
+            i--;
         }
         
         return true;
@@ -54,7 +55,7 @@ public class Dog {
     }
 
     public boolean takeBath (Optional<Shampoo> shampooOptional, int shampooUses, Yard yard, Random random) {
-        int randomBonus = random.nextInt(0, 11);
+        int randomBonus = random.nextInt(11);
         int actualUses = 0;
         double shampooQuality = 0.5;
         double shampooSmell = 0.5;
@@ -91,7 +92,7 @@ public class Dog {
     public int tryRemoveFleas (double chance, Yard yard, Random random) {
         int fleasRemoved = 0;
         for (int i = 0; i < pulgas.size(); i++) {
-            if (random.nextInt(0, 101) >= chance) continue;
+            if (random.nextInt(101) >= chance) continue;
             Flea flea = pulgas.get(i);
             pulgas.remove(flea);
             yard.addFlea(flea);

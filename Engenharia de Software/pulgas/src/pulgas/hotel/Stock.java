@@ -1,11 +1,14 @@
-package pulgas;
+package pulgas.hotel;
 
 import java.util.LinkedList;
 import java.util.Random;
 
+import pulgas.products.Shampoo;
+
 public class Stock {
 
     private LinkedList<Shampoo> shampoos;
+    private int money;
 
     public Stock(Random random) {
         shampoos = new LinkedList<>();
@@ -20,4 +23,9 @@ public class Stock {
     }
 
     public LinkedList<Shampoo> getShampoos() { return shampoos; }
+    public int getMoney() { return money; }
+
+    public void addMoney (int amount) {
+        money += money;
+    }
 }

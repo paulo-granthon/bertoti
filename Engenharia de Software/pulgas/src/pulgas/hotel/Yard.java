@@ -1,8 +1,13 @@
-package pulgas;
+package pulgas.hotel;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+
+import pulgas.entities.Dog;
+import pulgas.entities.Flea;
+import pulgas.utils.Happiness;
+import pulgas.utils.Names;
 
 
 public class Yard {

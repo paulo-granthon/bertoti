@@ -1,4 +1,4 @@
-package pulgas;
+package pulgas.utils;
 
 public class Ascii {
     public static String dog (Race race) {

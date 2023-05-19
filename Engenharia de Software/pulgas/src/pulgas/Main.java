@@ -5,6 +5,13 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.Scanner;
 
+import pulgas.entities.Dog;
+import pulgas.hotel.Stock;
+import pulgas.hotel.Yard;
+import pulgas.products.Shampoo;
+import pulgas.utils.Ascii;
+import pulgas.utils.Happiness;
+
 public class Main {
 
     private static Random random;
@@ -29,7 +36,7 @@ public class Main {
             
             while (actions > 0) checkInput();
 
-            System.out.println("Puxa vida, já está tão tarde!\n*Você está cansado e foi dormir...*");
+            System.out.println("\nPuxa vida, já está tão tarde!\n*Você está cansado e foi dormir...*\n");
 
         }
     }
@@ -52,7 +59,7 @@ public class Main {
     }
 
     private static void checkInput () {
-        System.out.println("O que gostaria de fazer?\n1 - Ver Cachorros.\n2 - Ver estoque.\n3- Ir à Loja.\n0 - Nada.");
+        System.out.println("O que gostaria de fazer?\n1 - Ver Cachorros.\n2 - Ver estoque.\n3 - Ir à Loja.\n0 - Nada.");
         try {
             switch (scanner.nextInt()) {
                 case 0: break;
@@ -86,11 +93,21 @@ public class Main {
     }
 
     private static void checkStock () {
-        // TODO
+        StringBuilder sb = new StringBuilder("Você possui ")
+            .append(stock.getMoney()).append(" dinheiros e os seguintes items em estoque no momento:"
+        );
+        List<Shampoo> shampoos = stock.getShampoos();
+        for (int i = 0; i < shampoos.size(); i++) {
+            sb.append("\n").append(i + 1).append(" - ").append(shampoos.get(i).getName());
+        }
+        System.out.println(sb.append("\n0 - Voltar").toString());
+        try {
+            if (scanner.nextInt() != 0) throw new Exception("Comando Inválido");
+        } catch (Exception e) {}
     }
 
     private static void goShopping () {
-        // TODO
+
     }
 
     private static void checkDog (Dog dog) {
@@ -100,8 +117,8 @@ public class Main {
         System.out.println(Ascii.dog(dog.getRace()));
         System.out.println(
             new StringBuilder("O que gostaria de fazer?")
-            .append("\n1 - Fazer carinho em ").append(dog.getName())
-            .append("\n2 - Dar banho em ").append(dog.getName())
+            .append("\n1 - Dar banho em ").append(dog.getName())
+            .append("\n2 - Fazer carinho em ").append(dog.getName())
             .append("\n0 - Voltar")
         .toString());
         try {

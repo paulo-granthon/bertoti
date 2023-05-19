@@ -1,6 +1,8 @@
-package pulgas;
+package pulgas.entities;
 
 import java.util.Random;
+
+import pulgas.hotel.Yard;
 
 public class Flea {
     private String name;

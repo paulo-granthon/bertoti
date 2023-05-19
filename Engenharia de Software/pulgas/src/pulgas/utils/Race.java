@@ -1,4 +1,4 @@
-package pulgas;
+package pulgas.utils;
 
 import java.util.Random;
 

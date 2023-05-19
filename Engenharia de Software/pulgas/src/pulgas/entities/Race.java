@@ -1,4 +1,6 @@
-package pulgas;
+package pulgas.entities;
+
+import pulgas.utils.RandGen;
 
 public enum Race {
     Labrador("Labrador"),

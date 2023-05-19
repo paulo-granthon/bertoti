@@ -1,4 +1,6 @@
-package pulgas;
+package pulgas.products;
+
+import pulgas.utils.RandGen;
 
 public class Shampoo {
     private String name;

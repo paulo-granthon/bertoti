@@ -1,6 +1,9 @@
-package pulgas;
+package pulgas.main;
 
 import java.util.LinkedList;
+
+import pulgas.products.Shampoo;
+import pulgas.utils.RandGen;
 
 public class Stock {
 

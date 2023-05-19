@@ -1,7 +1,14 @@
-package pulgas;
+package pulgas.entities;
 
 import java.util.List;
 import java.util.Optional;
+
+import pulgas.main.Yard;
+import pulgas.products.Shampoo;
+import pulgas.utils.Happiness;
+import pulgas.utils.Names;
+import pulgas.utils.RandGen;
+
 import java.util.LinkedList;
 
 public class Dog {

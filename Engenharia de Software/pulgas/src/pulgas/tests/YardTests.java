@@ -1,11 +1,11 @@
 package pulgas.tests;
 import org.junit.Test;
 
-import pulgas.Dog;
-import pulgas.Flea;
-import pulgas.Race;
-import pulgas.RandGen;
-import pulgas.Yard;
+import pulgas.entities.Dog;
+import pulgas.entities.Flea;
+import pulgas.entities.Race;
+import pulgas.main.Yard;
+import pulgas.utils.RandGen;
 
 import static org.junit.Assert.*;
 

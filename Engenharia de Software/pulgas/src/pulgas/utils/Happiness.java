@@ -1,4 +1,4 @@
-package pulgas;
+package pulgas.utils;
 
 public class Happiness {
     public static String overallHappiness (int factor) { return overallHappiness(factor, true, false); }

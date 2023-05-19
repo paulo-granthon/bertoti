@@ -1,4 +1,7 @@
-package pulgas;
+package pulgas.entities;
+
+import pulgas.main.Yard;
+import pulgas.utils.RandGen;
 
 public class Flea {
     private String name;

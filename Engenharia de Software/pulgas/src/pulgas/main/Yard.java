@@ -1,7 +1,13 @@
-package pulgas;
+package pulgas.main;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import pulgas.entities.Dog;
+import pulgas.entities.Flea;
+import pulgas.utils.Happiness;
+import pulgas.utils.Names;
+import pulgas.utils.RandGen;
 
 public class Yard {
 

@@ -4,6 +4,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+import pulgas.entities.Dog;
+import pulgas.main.Stock;
+import pulgas.main.Yard;
+import pulgas.products.Shampoo;
+import pulgas.utils.Ascii;
+import pulgas.utils.Happiness;
+import pulgas.utils.RandGen;
+
 public class Main {
 
     private static RandGen randGen;

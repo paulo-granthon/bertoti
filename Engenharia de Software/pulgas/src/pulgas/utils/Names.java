@@ -1,4 +1,4 @@
-package pulgas;
+package pulgas.utils;
 
 public class Names {
     public static final String[] NAMES = new String[] {

@@ -1,18 +1,12 @@
-## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+# Pulgas
 
-## Folder Structure
+This is a simple console game prototype where you control the actions of a Pet Hotel owner trying to keep the dogs happy and the fleas away from the dogs.
 
-The workspace contains two folders by default, where:
+## Project UML:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+![Project UML](./Engenharia de Software/pulgas/docs/pulgas.png)
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Use Cases:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+![Project UML](./Engenharia de Software/pulgas/docs/pulgas_use_cases.png)

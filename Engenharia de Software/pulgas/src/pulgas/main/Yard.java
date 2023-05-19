@@ -18,13 +18,12 @@ public class Yard {
     private List<Dog> dogs = new LinkedList<Dog>();
     private List<Flea> fleas = new LinkedList<Flea>();
 
-    public Yard (RandGen randGen) {
-        for (int i = 0; i < PULGAS_INIT; i++) {
-            addFlea(new Flea(Names.RandomName(randGen)));
-        }
-        
+    public Yard (RandGen randGen) {        
         for (int i = 0; i < DOGS_INIT; i++) {
             addCachorro(new Dog(randGen));
+        }
+        for (int i = 0; i < PULGAS_INIT; i++) {
+            dogs.get(randGen.randInt(dogs.size() - 1)).addPulga(new Flea(Names.RandomName(randGen)));
         }
     }
 

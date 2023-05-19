@@ -27,11 +27,12 @@ public class Dog {
             flee(yard);
             return false;
         }
-        for (Flea pulga : pulgas) {
-            if (!pulga.update(yard, randGen)) {
-                pulgas.remove(pulga);
-                yard.addFlea(pulga);
-            }
+        for (int i = 0; i < pulgas.size(); i++) {
+            Flea pulga = pulgas.get(i);
+            if (pulga.update(yard, randGen)) continue;
+            pulgas.remove(pulga);
+            yard.addFlea(pulga);
+            i--;
         }
         
         return true;

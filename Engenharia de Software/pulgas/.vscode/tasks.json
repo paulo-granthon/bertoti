@@ -1,0 +1,13 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Set Java Environment Variables",
+        "type": "shell",
+        "command": "jcfg.bat",
+        "group": "build",
+        "problemMatcher": []
+      }
+    ]
+  }
+  

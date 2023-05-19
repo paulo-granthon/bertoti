@@ -15,7 +15,7 @@ public class Shop {
     }
 
     private void generateRandomStock (RandGen randGen) {
-        while (randGen.randInt(101) < 25) {
+        while (randGen.happens(101, 25)) {
             addRandomProduct(randGen);
         }
         if (products.size() < 2) generateRandomStock(randGen);

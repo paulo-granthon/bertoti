@@ -126,7 +126,6 @@ public class Main {
                 case 0: actions--; break;
                 case 1: giveBath(dog); break;
                 case 2: pet(dog); break;
-                // case 3: goShopping(); break;
                 default: throw new Exception("Comando Inválido");
             }
         } catch (Exception e) {
@@ -135,9 +134,25 @@ public class Main {
     }
 
     private static void giveBath (Dog dog) {
-        Optional<Shampoo> shampoo = chooseShampoo();
-        int uses = shampoo.isPresent() ? chooseNumber("Quanto gostaria de usar?", 1, 4) : 1;
-        dog.takeBath(shampoo, uses, yard, randGen);
+        Optional<Shampoo> shampooOptional = chooseShampoo();
+        int actualUses = 1;
+        double shampooQuality = 0.5;
+        double shampooSmell = 0.5;
+        if (shampooOptional.isPresent()) {
+            Shampoo shampoo = shampooOptional.get();
+            shampooQuality = shampoo.getQuality();
+            shampooSmell = shampoo.getSmell();
+            int shampooUses = chooseNumber("Quanto gostaria de usar?", 1, Math.min(4, shampoo.getUses()));
+            actualUses = shampoo.use(shampooUses);
+            if (shampoo.getUses() == 0) System.out.println("O Shampoo " + shampoo.getName() + " acabou!");
+            if (actualUses != shampooUses) System.out.println(
+                "Não tinha Shampoo suficiente para " + shampooUses + 
+                " usos! Usando " + actualUses + " de Shampoo."
+            );
+            System.out.println("Usando " + actualUses + " de Shampoo.");
+        }
+
+        dog.takeBath(shampooQuality * actualUses, shampooSmell * actualUses, yard, randGen);
         actions--;
     }
 

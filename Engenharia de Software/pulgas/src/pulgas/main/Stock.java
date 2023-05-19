@@ -16,7 +16,7 @@ public class Stock {
     }
 
     private void generateRandomStock (RandGen randGen) {
-        while (randGen.randInt(101) < 25) {
+        while (randGen.happens(101, 25)) {
             shampoos.add(Shampoo.random(randGen));
         }
         if (shampoos.size() < 2) generateRandomStock(randGen);

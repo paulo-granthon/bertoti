@@ -1,10 +1,8 @@
 package pulgas.entities;
 
 import java.util.List;
-import java.util.Optional;
 
 import pulgas.main.Yard;
-import pulgas.products.Shampoo;
 import pulgas.utils.Happiness;
 import pulgas.utils.Names;
 import pulgas.utils.RandGen;
@@ -30,7 +28,7 @@ public class Dog {
     }
 
     public boolean update (Yard yard, RandGen randGen) {
-        if (happiness <= 20 && randGen.randInt(50) < 30 - happiness) {
+        if (happiness <= 20 && randGen.happens(50, 30 - happiness)) {
             flee(yard);
             return false;
         }
@@ -60,27 +58,14 @@ public class Dog {
         );
     }
 
-    public boolean takeBath (Optional<Shampoo> shampooOptional, int shampooUses, Yard yard, RandGen randGen) {
+    public boolean takeBath (double bathQuality, double bathSmell, Yard yard, RandGen randGen) {
         int randomBonus = randGen.randInt(0, 11);
-        int actualUses = 0;
-        double shampooQuality = 0.5;
-        double shampooSmell = 0.5;
-        if (shampooOptional.isPresent()) {
-            Shampoo shampoo = shampooOptional.get();
-            actualUses = shampoo.use(shampooUses);
-            if (shampoo.getUses() == 0) System.out.println("O Shampoo " + shampoo.getName() + " acabou!");
-            if (actualUses != shampooUses) System.out.println(
-                "Não tinha Shampoo suficiente para " + shampooUses + 
-                " usos! Usando " + actualUses + " de Shampoo."
-            );
-            System.out.println("Usando " + actualUses + " de Shampoo.");
-        }
         if (randomBonus == 0) System.out.println(name + "Não gostou tanto!");
         else if (randomBonus < 4) System.out.println(name + " achou ok.");
         else if (randomBonus < 8) System.out.println(name + " gostou.");
         else System.out.println(name + " adorou!");
-        int pulgasRemoved = tryRemoveFleas((shampooQuality * actualUses) + randomBonus + 10, yard, randGen);
-        int happinessFactor = (int)((shampooSmell * actualUses) * pulgasRemoved) + randomBonus;
+        int pulgasRemoved = tryRemoveFleas(bathQuality + randomBonus + 10, yard, randGen);
+        int happinessFactor = (int)(bathSmell * pulgasRemoved) + randomBonus;
         happiness += happinessFactor;
         System.out.println(
             name + " ficou " + Happiness.factorAdjective(happinessFactor) + 
@@ -98,13 +83,14 @@ public class Dog {
     public int tryRemoveFleas (double chance, Yard yard, RandGen randGen) {
         int fleasRemoved = 0;
         for (int i = 0; i < pulgas.size(); i++) {
-            if (randGen.randInt(0, 101) >= chance) continue;
+            if (!randGen.happens(101, chance)) continue;
             Flea flea = pulgas.get(i);
             pulgas.remove(flea);
             yard.addFlea(flea);
             fleasRemoved++;
             i--;
         }
+        System.out.println("fleas removed: " + fleasRemoved);
         return fleasRemoved;
     }
 
@@ -112,12 +98,23 @@ public class Dog {
         happiness += factor;
     }
 
-    public void addPulga (Flea pulga) { pulgas.add(pulga); }
-    public boolean removePulga (Flea p) { return pulgas.remove(p); }
+    public void addPulga (Flea pulga) {
+        pulga.setHostDog(this);
+        pulgas.add(pulga);
+    }
 
+    public boolean removePulga (Flea pulga) { 
+        pulga.setHostDog(null);
+        return pulgas.remove(pulga);
+    }
+
+    public boolean hasPulga (Flea pulga) { return pulgas.contains(pulga); }
+    
     public String getName() { return name; }
     public Race getRace() { return race; }
     public List<Flea> getPulgas() { return pulgas; }
     public int getHappiness() { return happiness; }
+
+    public void setHappiness(int happiness) { this.happiness = happiness; }
 
 }

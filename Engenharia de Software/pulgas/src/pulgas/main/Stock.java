@@ -1,4 +1,4 @@
-package pulgas.hotel;
+package pulgas.main;
 
 import java.util.LinkedList;
 import java.util.Random;

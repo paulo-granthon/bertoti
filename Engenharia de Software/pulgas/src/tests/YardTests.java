@@ -1,10 +1,10 @@
-package pulgas.tests;
+package tests;
 import org.junit.Test;
 
 import pulgas.entities.Dog;
 import pulgas.entities.Flea;
-import pulgas.hotel.Yard;
-import pulgas.utils.Race;
+import pulgas.entities.Race;
+import pulgas.main.Yard;
 
 import static org.junit.Assert.*;
 

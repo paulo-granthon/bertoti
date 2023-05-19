@@ -2,7 +2,7 @@ package pulgas.entities;
 
 import java.util.Random;
 
-import pulgas.hotel.Yard;
+import pulgas.main.Yard;
 
 public class Flea {
     private String name;

@@ -6,8 +6,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 import pulgas.entities.Dog;
-import pulgas.hotel.Stock;
-import pulgas.hotel.Yard;
+import pulgas.main.Stock;
+import pulgas.main.Yard;
 import pulgas.products.Shampoo;
 import pulgas.utils.Ascii;
 import pulgas.utils.Happiness;

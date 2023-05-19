@@ -4,11 +4,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import pulgas.hotel.Yard;
+import pulgas.main.Yard;
 import pulgas.products.Shampoo;
 import pulgas.utils.Happiness;
 import pulgas.utils.Names;
-import pulgas.utils.Race;
 
 import java.util.LinkedList;
 

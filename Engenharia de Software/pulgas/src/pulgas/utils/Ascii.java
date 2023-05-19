@@ -1,5 +1,7 @@
 package pulgas.utils;
 
+import pulgas.entities.Race;
+
 public class Ascii {
     public static String dog (Race race) {
         switch (race) {

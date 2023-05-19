@@ -31,7 +31,7 @@ public class RandGen {
     public double randDouble () { return randDouble(0.0, Double.MAX_VALUE); }
     public double randDouble (double max) { return randDouble(0.0, max); }
     public double randDouble (double min, double max) {
-        lastDouble = random.nextDouble(max - min) + min;
+        lastDouble = (random.nextDouble() % (max - min)) + min;
         return lastDouble;
     }
 

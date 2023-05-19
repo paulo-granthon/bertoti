@@ -7,17 +7,21 @@ public class Shampoo {
     private int uses;
     private double quality;
     private double smell;
+    private int price;
+    
     
     public Shampoo(
         String name,
         int uses,
         double quality,
-        double smell
+        double smell,
+        int price
     ) {
         this.name = name;
         this.uses = uses;
         this.quality = quality;
         this.smell = smell;
+        this.price = price;
     }
     
     public int use (int amount) {
@@ -52,12 +56,15 @@ public class Shampoo {
             names[randGen.randInt(101) % names.length],
             randGen.randInt(1, 13),
             randGen.randDouble(0.1, 4.5),
-            randGen.randDouble(0.1, 4.5)
-        );
+            randGen.randDouble(0.1, 4.5),
+            randGen.randInt(10, 50)
+            );
     }
     
     public String getName() { return name; }
     public int getUses() { return uses; }
     public double getQuality() { return quality; }
     public double getSmell() { return smell; }
+    public int getPrice() { return price; }
+
 }

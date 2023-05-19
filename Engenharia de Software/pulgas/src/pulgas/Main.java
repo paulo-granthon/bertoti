@@ -7,7 +7,9 @@ import java.util.Scanner;
 import pulgas.entities.Dog;
 import pulgas.main.Stock;
 import pulgas.main.Yard;
+import pulgas.products.ProductData;
 import pulgas.products.Shampoo;
+import pulgas.products.Shop;
 import pulgas.utils.Ascii;
 import pulgas.utils.Happiness;
 import pulgas.utils.RandGen;
@@ -17,16 +19,23 @@ public class Main {
     private static RandGen randGen;
     private static Yard yard;
     private static Stock stock;
-    private static Scanner scanner;
+
+    private static Shop shop;
+
     private static int day = 0;
+
     private static int actions;
     private static final int ACTIONS_PER_DAY = 6;
+
+    private static Scanner scanner;
 
     public static void main (String[] args) {
 
         randGen = new RandGen();
         yard = new Yard(randGen);
         stock = new Stock(randGen);
+
+        shop = new Shop(randGen);
 
         scanner = new Scanner(System.in);
 
@@ -98,7 +107,7 @@ public class Main {
         );
         List<Shampoo> shampoos = stock.getShampoos();
         for (int i = 0; i < shampoos.size(); i++) {
-            sb.append("\n").append(i + 1).append(" - ").append(shampoos.get(i).getName());
+            sb.append("\n ").append(shampoos.get(i).getName());
         }
         System.out.println(sb.append("\n0 - Voltar").toString());
         try {
@@ -107,7 +116,26 @@ public class Main {
     }
 
     private static void goShopping () {
+        StringBuilder sb = new StringBuilder("Bem vindo a loja, você possui ").append(stock.getMoney())
+            .append(" dinheiros. O que gostaria de adquirir?");
+        List<ProductData> products = shop.getProducts();
+        for (int i = 0; i < products.size(); i++) {
+            sb.append("\n").append(i + 1).append(" - ").append(products.get(i).getName())
+            .append(" | ").append(products.get(i).getStock()).append(" em estoque");
+        }
+        System.out.println(sb.append("\n0 - Nenhum").toString());
+        try {
+            int choice = scanner.nextInt();
+            if (choice < 0 || choice > products.size() + 1) throw new Exception("Comando Inválido");
+            if (choice == 0) return;
+            
+            int amount = chooseNumber("Quantos gostaria de comprar? ", 0, products.get(choice).getStock());
+            shop.buyProduct(choice, amount);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            goShopping();
+        }
     }
 
     private static void checkDog (Dog dog) {

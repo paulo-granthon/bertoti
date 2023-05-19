@@ -25,7 +25,10 @@ public class ProductData {
         daysInStock = 0;
     }
 
+    public String getName () { return product.getName(); }
+
     public Shampoo getProduct() { return product; }
+
     public int getStock() { return stock; }
     public int getDaysInStock() { return daysInStock; }
 }

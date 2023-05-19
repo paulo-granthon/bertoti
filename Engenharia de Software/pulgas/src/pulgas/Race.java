@@ -1,7 +1,5 @@
 package pulgas;
 
-import java.util.Random;
-
 public enum Race {
     Labrador("Labrador"),
     Pincher("Pincher"),
@@ -20,8 +18,8 @@ public enum Race {
     
     public String getDisplayName() { return displayName; }
 
-    public static final Race randomRace (Random random) {
-        return RACES[random.nextInt(RACES.length)];
+    public static final Race randomRace (RandGen randGen) {
+        return RACES[randGen.randInt(RACES.length)];
     }
 
 }

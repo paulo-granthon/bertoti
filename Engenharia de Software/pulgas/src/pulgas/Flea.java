@@ -1,7 +1,5 @@
 package pulgas;
 
-import java.util.Random;
-
 public class Flea {
     private String name;
     private int hunger;
@@ -11,10 +9,10 @@ public class Flea {
         this.name = name;
     }
 
-    public boolean update (Yard yard, Random random) {
+    public boolean update (Yard yard, RandGen randGen) {
         if (hunger >= 100) return false;
         hunger += 1;
-        if (!sugar()) return pular(yard, random);
+        if (!sugar()) return pular(yard, randGen);
         return true;
     }
 
@@ -26,13 +24,13 @@ public class Flea {
         return true;
     }
 
-    public boolean pular (Yard yard, Random random) { return pular(yard, 0, random); }
-    public boolean pular (Yard yard, int chance, Random random) {
+    public boolean pular (Yard yard, RandGen randGen) { return pular(yard, 0, randGen); }
+    public boolean pular (Yard yard, int chance, RandGen randGen) {
         if (chance == 0) chance = hunger;
-        if (random.nextInt(101) < chance) return true;
+        if (randGen.randInt(101) < chance) return true;
         boolean removed = dog == null;
         for (Dog d : yard.getDogs()) {
-            if (random.nextInt(101) < chance) {
+            if (randGen.randInt(101) < chance) {
                 d.addPulga(this);
             }
         }

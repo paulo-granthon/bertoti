@@ -1,7 +1,5 @@
 package pulgas;
 
-import java.util.Random;
-
 public class Shampoo {
     private String name;
     private int uses;
@@ -35,7 +33,7 @@ public class Shampoo {
         return true; 
     }
 
-    public static Shampoo random (Random random) {
+    public static Shampoo random (RandGen randGen) {
         final String[] names = new String[] {
             "Espuma Fofurante",
             "Cheirinho Canino",
@@ -49,10 +47,10 @@ public class Shampoo {
             "Espuma de Risadas"
         };
         return new Shampoo(
-            names[random.nextInt(101) % names.length],
-            random.nextInt(1, 13),
-            random.nextDouble(0.1, 4.5),
-            random.nextDouble(0.1, 4.5)
+            names[randGen.randInt(101) % names.length],
+            randGen.randInt(1, 13),
+            randGen.randDouble(0.1, 4.5),
+            randGen.randDouble(0.1, 4.5)
         );
     }
     

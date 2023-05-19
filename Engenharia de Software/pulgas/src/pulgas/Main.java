@@ -2,12 +2,11 @@ package pulgas;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
-    private static Random random;
+    private static RandGen randGen;
     private static Yard yard;
     private static Stock stock;
     private static Scanner scanner;
@@ -17,9 +16,9 @@ public class Main {
 
     public static void main (String[] args) {
 
-        random = new Random();
-        yard = new Yard(random);
-        stock = new Stock(random);
+        randGen = new RandGen();
+        yard = new Yard(randGen);
+        stock = new Stock(randGen);
 
         scanner = new Scanner(System.in);
 
@@ -36,7 +35,7 @@ public class Main {
 
     private static void newDay () {
 
-        yard.update(random);
+        yard.update(randGen);
         day++;
         actions = ACTIONS_PER_DAY;
 
@@ -120,7 +119,7 @@ public class Main {
     private static void giveBath (Dog dog) {
         Optional<Shampoo> shampoo = chooseShampoo();
         int uses = shampoo.isPresent() ? chooseNumber("Quanto gostaria de usar?", 1, 4) : 1;
-        dog.takeBath(shampoo, uses, yard, random);
+        dog.takeBath(shampoo, uses, yard, randGen);
         actions--;
     }
 

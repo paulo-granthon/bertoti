@@ -2,7 +2,6 @@ package pulgas;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 import java.util.LinkedList;
 
 public class Dog {
@@ -11,10 +10,10 @@ public class Dog {
     private List<Flea> pulgas = new LinkedList<Flea>();
     private int happiness;
 
-    public Dog(Random random) {
-        this.name = Names.RandomName(random);
-        this.race = Race.randomRace(random);
-        this.happiness = random.nextInt(30, 71);
+    public Dog(RandGen randGen) {
+        this.name = Names.RandomName(randGen);
+        this.race = Race.randomRace(randGen);
+        this.happiness = randGen.randInt(30, 71);
     }
 
     public Dog(String nome, Race race) {
@@ -23,13 +22,13 @@ public class Dog {
         this.happiness = 50;
     }
 
-    public boolean update (Yard yard, Random random) {
-        if (happiness <= 20 && random.nextInt(50) < 30 - happiness) {
+    public boolean update (Yard yard, RandGen randGen) {
+        if (happiness <= 20 && randGen.randInt(50) < 30 - happiness) {
             flee(yard);
             return false;
         }
         for (Flea pulga : pulgas) {
-            if (!pulga.update(yard, random)) {
+            if (!pulga.update(yard, randGen)) {
                 pulgas.remove(pulga);
                 yard.addFlea(pulga);
             }
@@ -38,10 +37,10 @@ public class Dog {
         return true;
     }
 
-    public void scratch (Yard yard, Random random) {
+    public void scratch (Yard yard, RandGen randGen) {
         System.out.println(
             "O cachorro " + name + " se coçou e se livrou de " + 
-            tryRemoveFleas(happiness / 2, yard, random) + " pulgas!"
+            tryRemoveFleas(happiness / 2, yard, randGen) + " pulgas!"
         );
     }
     
@@ -53,8 +52,8 @@ public class Dog {
         );
     }
 
-    public boolean takeBath (Optional<Shampoo> shampooOptional, int shampooUses, Yard yard, Random random) {
-        int randomBonus = random.nextInt(0, 11);
+    public boolean takeBath (Optional<Shampoo> shampooOptional, int shampooUses, Yard yard, RandGen randGen) {
+        int randomBonus = randGen.randInt(0, 11);
         int actualUses = 0;
         double shampooQuality = 0.5;
         double shampooSmell = 0.5;
@@ -72,7 +71,7 @@ public class Dog {
         else if (randomBonus < 4) System.out.println(name + " achou ok.");
         else if (randomBonus < 8) System.out.println(name + " gostou.");
         else System.out.println(name + " adorou!");
-        int pulgasRemoved = tryRemoveFleas((shampooQuality * actualUses) + randomBonus + 10, yard, random);
+        int pulgasRemoved = tryRemoveFleas((shampooQuality * actualUses) + randomBonus + 10, yard, randGen);
         int happinessFactor = (int)((shampooSmell * actualUses) * pulgasRemoved) + randomBonus;
         happiness += happinessFactor;
         System.out.println(
@@ -88,10 +87,10 @@ public class Dog {
         }
     }
 
-    public int tryRemoveFleas (double chance, Yard yard, Random random) {
+    public int tryRemoveFleas (double chance, Yard yard, RandGen randGen) {
         int fleasRemoved = 0;
         for (int i = 0; i < pulgas.size(); i++) {
-            if (random.nextInt(0, 101) >= chance) continue;
+            if (randGen.randInt(0, 101) >= chance) continue;
             Flea flea = pulgas.get(i);
             pulgas.remove(flea);
             yard.addFlea(flea);

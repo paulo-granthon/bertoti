@@ -2,8 +2,6 @@ package pulgas;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
-
 
 public class Yard {
 
@@ -14,21 +12,21 @@ public class Yard {
     private List<Dog> dogs = new LinkedList<Dog>();
     private List<Flea> fleas = new LinkedList<Flea>();
 
-    public Yard (Random random) {
+    public Yard (RandGen randGen) {
         for (int i = 0; i < PULGAS_INIT; i++) {
-            addFlea(new Flea(Names.RandomName(random)));
+            addFlea(new Flea(Names.RandomName(randGen)));
         }
         
         for (int i = 0; i < DOGS_INIT; i++) {
-            addCachorro(new Dog(random));
+            addCachorro(new Dog(randGen));
         }
     }
 
-    public void update (Random random) {
+    public void update (RandGen randGen) {
 
         if (addPulgaTimer >= addPulgaCD) {
             System.out.println("Nova Pulga adicionada! |  Pulgas " + (fleas.size() - 1) + " -> " + fleas.size());
-            addFlea(new Flea(Names.RandomName(random)));
+            addFlea(new Flea(Names.RandomName(randGen)));
             addPulgaTimer -= addPulgaCD;
         }
         
@@ -36,7 +34,7 @@ public class Yard {
         
         for (int i = 0; i < fleas.size(); i++) {
             Flea pulga = fleas.get(i);
-            if (pulga.update(this, random)) continue;
+            if (pulga.update(this, randGen)) continue;
             System.out.println(
                 "A pulga " + pulga.getName() + 
                 " morreu de fome | Pulgas " + fleas.size() + " -> " + (fleas.size() - 1)
@@ -47,7 +45,7 @@ public class Yard {
         
         for (int i = 0; i < dogs.size(); i++) {
             Dog cachorro = dogs.get(i);
-            if (cachorro.update(this, random)) continue;
+            if (cachorro.update(this, randGen)) continue;
             System.out.println(
                 "O cachorro " + cachorro.getName() + 
                 " estava " + Happiness.overallHappiness(cachorro.getHappiness(), false, false) + 

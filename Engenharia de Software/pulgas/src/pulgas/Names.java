@@ -1,7 +1,5 @@
 package pulgas;
 
-import java.util.Random;
-
 public class Names {
     public static final String[] NAMES = new String[] {
         "Miguel",
@@ -25,8 +23,8 @@ public class Names {
         "Maite",
         "Heloisa",
     };
-    public static final String RandomName (Random random) {
-        return NAMES[random.nextInt(NAMES.length)];
+    public static final String RandomName (RandGen randGen) {
+        return NAMES[randGen.randInt(NAMES.length)];
     }
 
 }

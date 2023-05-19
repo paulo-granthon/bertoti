@@ -5,16 +5,15 @@ import org.junit.Test;
 import pulgas.Dog;
 import pulgas.Flea;
 import pulgas.Race;
+import pulgas.RandGen;
 
 import static org.junit.Assert.*;
-
-import java.util.Random;
 
 public class DogTests {
 
     @Test
     public void testAddAndRemovePulga() {
-        Dog cachorro = new Dog("Test Dog", Race.randomRace(new Random()));
+        Dog cachorro = new Dog("Test Dog", Race.randomRace(new RandGen()));
         Flea pulga = new Flea("Test Pulga");
         cachorro.addPulga(pulga);
         assertTrue(cachorro.getPulgas().contains(pulga));

@@ -23,7 +23,7 @@ public class Yard {
             addCachorro(new Dog(randGen));
         }
         for (int i = 0; i < PULGAS_INIT; i++) {
-            dogs.get(randGen.randInt(dogs.size() - 1)).addPulga(new Flea(Names.RandomName(randGen)));
+            dogs.get(randGen.randInt(dogs.size() - 1)).addPulga(new Flea(Names.RandomDogName(randGen)));
         }
     }
 
@@ -31,7 +31,7 @@ public class Yard {
 
         if (addPulgaTimer >= addPulgaCD) {
             System.out.println("Nova Pulga adicionada! |  Pulgas " + (fleas.size() - 1) + " -> " + fleas.size());
-            addFlea(new Flea(Names.RandomName(randGen)));
+            addFlea(new Flea(Names.RandomDogName(randGen)));
             addPulgaTimer -= addPulgaCD;
         }
         

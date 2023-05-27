@@ -9,7 +9,6 @@ public class Shampoo {
     private double smell;
     private int price;
     
-    
     public Shampoo(
         String name,
         int uses,
@@ -57,8 +56,8 @@ public class Shampoo {
             randGen.randInt(1, 13),
             randGen.randDouble(0.1, 4.5),
             randGen.randDouble(0.1, 4.5),
-            randGen.randInt(10, 50)
-            );
+            randGen.randInt(25, 200)
+        );
     }
     
     public String getName() { return name; }

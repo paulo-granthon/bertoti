@@ -1,9 +1,13 @@
 package pulgas;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+import pulgas.data.AcceptedContract;
+import pulgas.data.Contract;
+import pulgas.data.ContractResult;
 import pulgas.entities.Dog;
 import pulgas.main.Stock;
 import pulgas.main.Yard;
@@ -13,6 +17,7 @@ import pulgas.products.Shop;
 import pulgas.utils.Ascii;
 import pulgas.utils.Happiness;
 import pulgas.utils.RandGen;
+import pulgas.utils.Reputation;
 
 public class Main {
 
@@ -20,7 +25,11 @@ public class Main {
     private static Yard yard;
     private static Stock stock;
 
+    private static LinkedList<AcceptedContract> contracts;
+
     private static Shop shop;
+
+    private static int reputation;
 
     private static int day = 0;
 
@@ -34,6 +43,7 @@ public class Main {
         randGen = new RandGen();
         yard = new Yard(randGen);
         stock = new Stock(randGen);
+        contracts = new LinkedList<>();
 
         shop = new Shop(randGen);
 
@@ -54,6 +64,16 @@ public class Main {
 
         yard.update(randGen);
         day++;
+
+        handleContracts(randGen);
+
+        System.out.println("No geral sua reputação está " + Reputation.overallReputation(reputation));
+
+        if (reputation <= 0) {
+            gameOver();
+            return;
+        }
+
         actions = ACTIONS_PER_DAY;
 
         System.out.println("Dia " + day + "\t|\tCachorros: " + yard.getDogs().size() + "\t|\tPulgas: " + yard.getFleas().size());
@@ -65,6 +85,42 @@ public class Main {
         System.out.println(
             "No geral os cachorros estão " + Happiness.overallHappiness(overallHappiness, false, true) + " e as pulgas estão com fome!"
         );
+    }
+
+    private static void handleContracts (RandGen randGen) {
+
+        for (int i = 0; i < contracts.size(); i ++) {
+            AcceptedContract contract = contracts.get(i);
+
+            if (!contract.count()) continue;
+
+            ContractResult result = contract.getResult();
+
+            int contractPayment = result.getPayment();
+            int contractReputation = result.getReputation();
+
+            System.out.println(
+                new StringBuilder("O contrato com ").append(contract.getOwner())
+                .append(" foi concluído. Você ganhou ").append(contractPayment)
+                .append(" dinheiro e sua reputação ficou ").append(Reputation.factorAdjective(contractReputation))
+            );
+
+            stock.addMoney(contractPayment);
+            reputation += contractReputation;
+
+            contracts.remove(contract);
+            i--;
+        }
+
+        handleNewContracts();
+    }
+
+    private static void handleNewContracts() {
+        Contract[] contractOffers = Contract.randomArray(randGen);
+
+        for (Contract contract : contractOffers) {
+            
+        }
     }
 
     private static void checkInput () {

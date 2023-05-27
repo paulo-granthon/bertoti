@@ -16,7 +16,7 @@ public class Dog {
     private int happiness;
 
     public Dog(RandGen randGen) {
-        this.name = Names.RandomName(randGen);
+        this.name = Names.RandomDogName(randGen);
         this.race = Race.randomRace(randGen);
         this.happiness = randGen.randInt(30, 71);
     }

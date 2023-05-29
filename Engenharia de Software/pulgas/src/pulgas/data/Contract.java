@@ -1,6 +1,7 @@
 package pulgas.data;
 
 import pulgas.entities.Dog;
+import pulgas.utils.Names;
 import pulgas.utils.RandGen;
 
 public class Contract {
@@ -20,6 +21,7 @@ public class Contract {
     public static Contract random(RandGen randGen) {
         Dog dog = new Dog(randGen);
         return new Contract(
+            Names.RandomName(randGen),
             dog,
             randGen.randInt(1, 10),
             randGen.randInt(50, 60 + 1000 * (dog.getHappiness() / 100))

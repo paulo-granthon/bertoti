@@ -12,18 +12,14 @@ import pulgas.utils.RandGen;
 public class Yard {
 
     private static int PULGAS_INIT = 25;
-    private static int DOGS_INIT = 6;
     private static int addPulgaCD = 60;
     private int addPulgaTimer = 0;
     private List<Dog> dogs = new LinkedList<Dog>();
     private List<Flea> fleas = new LinkedList<Flea>();
 
     public Yard (RandGen randGen) {        
-        for (int i = 0; i < DOGS_INIT; i++) {
-            addCachorro(new Dog(randGen));
-        }
         for (int i = 0; i < PULGAS_INIT; i++) {
-            dogs.get(randGen.randInt(dogs.size() - 1)).addPulga(new Flea(Names.RandomDogName(randGen)));
+            addPulga(new Flea(Names.RandomDogName(randGen)));
         }
     }
 
@@ -31,7 +27,7 @@ public class Yard {
 
         if (addPulgaTimer >= addPulgaCD) {
             System.out.println("Nova Pulga adicionada! |  Pulgas " + (fleas.size() - 1) + " -> " + fleas.size());
-            addFlea(new Flea(Names.RandomDogName(randGen)));
+            addPulga(new Flea(Names.RandomDogName(randGen)));
             addPulgaTimer -= addPulgaCD;
         }
         
@@ -62,7 +58,7 @@ public class Yard {
 
     }
 
-    public void addFlea (Flea pulga) {
+    public void addPulga (Flea pulga) {
         fleas.add(pulga);
     }
 

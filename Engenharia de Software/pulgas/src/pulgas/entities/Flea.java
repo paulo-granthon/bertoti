@@ -30,7 +30,7 @@ public class Flea {
     public boolean pular (Yard yard, int chance, RandGen randGen) {
         if (chance == 0) chance = hunger;
         boolean removed = false;
-        System.out.println("flea has " + yard.getDogs().size() + " possible dogs to jump to");
+        // System.out.println("flea has " + yard.getDogs().size() + " possible dogs to jump to");
         for (Dog d : yard.getDogs()) {
             if (!randGen.happens(100, chance)) continue;
             if (hostDog != null && hostDog.removePulga(this)) removed = true;

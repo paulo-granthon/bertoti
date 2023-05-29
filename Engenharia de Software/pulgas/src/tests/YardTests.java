@@ -16,7 +16,7 @@ public class YardTests {
     public void testAddAndRemovePulga() {
         Yard quintal = new Yard(new RandGen());
         Flea pulga = new Flea("Test Pulga");
-        quintal.addFlea(pulga);
+        quintal.addPulga(pulga);
         assertTrue(quintal.getFleas().contains(pulga));
 
         boolean result = quintal.removePulga(pulga);

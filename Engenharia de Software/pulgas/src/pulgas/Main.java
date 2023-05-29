@@ -40,27 +40,34 @@ public class Main {
 
     public static void main (String[] args) {
 
+        newGame();
+    }
+
+    private static boolean newGame () {
         randGen = new RandGen();
         yard = new Yard(randGen);
         stock = new Stock(randGen);
         contracts = new LinkedList<>();
+        day = 0;
+        reputation = 50;
 
         shop = new Shop(randGen);
 
         scanner = new Scanner(System.in);
+    
+        Contract contract = Contract.random(randGen);
+        if (proposeContract(contract)) contracts.add(new AcceptedContract(contract));;
 
         while (true) {
-
-            newDay();
-            
+            if (!newDay()) break;
             while (actions > 0) checkInput();
-
             System.out.println("\nPuxa vida, já está tão tarde!\n*Você está cansado e foi dormir...*\n");
-
         }
+
+        return false;
     }
 
-    private static void newDay () {
+    private static boolean newDay () {
 
         yard.update(randGen);
         day++;
@@ -69,22 +76,23 @@ public class Main {
 
         System.out.println("No geral sua reputação está " + Reputation.overallReputation(reputation));
 
-        if (reputation <= 0) {
-            gameOver();
-            return;
-        }
+        if (reputation <= 0) return gameOver();
 
         actions = ACTIONS_PER_DAY;
 
-        System.out.println("Dia " + day + "\t|\tCachorros: " + yard.getDogs().size() + "\t|\tPulgas: " + yard.getFleas().size());
+        int dogCount = yard.getDogs().size();
+
+        System.out.println("Dia " + day + "\t|\tCachorros: " + dogCount + "\t|\tPulgas: " + yard.getFleas().size());
 
         int overallHappiness = 0;
         for (Dog dog : yard.getDogs()) overallHappiness += dog.getHappiness();
-        overallHappiness /= yard.getDogs().size();
+        overallHappiness /= dogCount > 0 ? dogCount : 1;
 
         System.out.println(
             "No geral os cachorros estão " + Happiness.overallHappiness(overallHappiness, false, true) + " e as pulgas estão com fome!"
         );
+
+        return true;
     }
 
     private static void handleContracts (RandGen randGen) {
@@ -119,8 +127,31 @@ public class Main {
         Contract[] contractOffers = Contract.randomArray(randGen);
 
         for (Contract contract : contractOffers) {
-            
+            if (!proposeContract(contract)) continue;
+
+            contracts.add(new AcceptedContract(contract));
         }
+    }
+
+    private static boolean proposeContract (Contract contract) {
+        Dog dog = contract.getDog();
+        System.out.println(
+            new StringBuilder(contract.getOwner()).append(" gostaria de deixar ").append(dog.getName())
+            .append(" em seus cuidados por ").append(contract.getDays()).append(" dias. ").append(dog.getName())
+            .append(" aparenta estar ").append(Happiness.overallHappiness(dog.getHappiness(), true, false))
+            .append(" Aceitas cuidar de ").append(dog.getName()).append("?\n1 - Sim.\n2 - Não")
+        );
+        try {
+            switch (scanner.nextInt()) {
+                case 1: return true;
+                case 2: return false;
+                default: throw new Exception("Comando Inválido");
+            }
+        } catch (Exception e) {
+            System.out.println("Comando inválido");
+            return proposeContract(contract);
+        }
+
     }
 
     private static void checkInput () {
@@ -176,8 +207,10 @@ public class Main {
             .append(" dinheiros. O que gostaria de adquirir?");
         List<ProductData> products = shop.getProducts();
         for (int i = 0; i < products.size(); i++) {
-            sb.append("\n").append(i + 1).append(" - ").append(products.get(i).getName())
-            .append(" | ").append(products.get(i).getStock()).append(" em estoque");
+            ProductData product = products.get(i);
+            sb.append("\n").append(i + 1).append(" - ").append(product.getName())
+            .append(" (Ð$: ").append(product.getProduct().getPrice()).append(") ")
+            .append(" | ").append(product.getStock()).append(" em estoque");
         }
         System.out.println(sb.append("\n0 - Nenhum").toString());
         try {
@@ -280,5 +313,19 @@ public class Main {
         actions--;
     }
 
-
+    private static boolean gameOver() {
+        System.out.println("Sua reputação chegou a zero e seu PetSpa faliu! Quer jogar novamente?\n1 - Sim\n2 - Não");
+        try {
+            switch (scanner.nextInt()) {
+                case 1: return newGame();
+                case 2: 
+                    System.out.println("Obrigado por jogar :)");
+                    return false;
+                default: throw new Exception("Comando Inválido");
+            }
+        } catch (Exception e) {
+            System.out.println("Comando inválido");
+            return gameOver();
+        }
+    }
 }

@@ -55,6 +55,7 @@ public class Names {
     };
     public static final String[] PERSON_SURNAMES = new String[] {
         "Cruz",
+        "Popovicz",
         "Malaquias",
         "Silva",
         "Santos",

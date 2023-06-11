@@ -2,25 +2,21 @@ package pulgas.products;
 
 import pulgas.utils.RandGen;
 
-public class Shampoo {
-    private String name;
+public class Shampoo extends Product {
     private int uses;
     private double quality;
     private double smell;
-    private int price;
     
-    public Shampoo(
+    public Shampoo (
         String name,
         int uses,
         double quality,
         double smell,
         int price
     ) {
-        this.name = name;
-        this.uses = uses;
+        super(name, price, uses);
         this.quality = quality;
         this.smell = smell;
-        this.price = price;
     }
     
     public int use (int amount) {
@@ -56,14 +52,10 @@ public class Shampoo {
             randGen.randInt(1, 13),
             randGen.randDouble(0.1, 4.5),
             randGen.randDouble(0.1, 4.5),
-            randGen.randInt(25, 200)
+            randGen.randInt(10, 50)
         );
     }
     
-    public String getName() { return name; }
-    public int getUses() { return uses; }
     public double getQuality() { return quality; }
     public double getSmell() { return smell; }
-    public int getPrice() { return price; }
-
 }

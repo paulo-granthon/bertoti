@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import pulgas.entities.Dog;
 import pulgas.entities.Flea;
-import pulgas.main.Yard;
+import pulgas.submenus.Yard;
 import pulgas.utils.RandGen;
 import tests.utils.MockRandGen;
 

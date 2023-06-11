@@ -2,7 +2,7 @@ package pulgas.entities;
 
 import java.util.List;
 
-import pulgas.main.Yard;
+import pulgas.submenus.Yard;
 import pulgas.utils.Happiness;
 import pulgas.utils.Names;
 import pulgas.utils.RandGen;

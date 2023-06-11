@@ -1,6 +1,6 @@
 package pulgas.entities;
 
-import pulgas.main.Yard;
+import pulgas.submenus.Yard;
 import pulgas.utils.RandGen;
 
 public class Flea {

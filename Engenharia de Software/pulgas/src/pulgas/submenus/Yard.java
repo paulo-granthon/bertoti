@@ -1,4 +1,4 @@
-package pulgas.main;
+package pulgas.submenus;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -5,8 +5,8 @@ This is a simple console game prototype where you control the actions of a Pet H
 
 ## Project UML:
 
-![Project UML](https://github.com/paulo-granthon/bertoti/blob/main/Engenharia%20de%20Software/pulgas/docs/pulgas.png)
+![Project UML](/Engenharia%20de%20Software/pulgas/docs/pulgas_uml.png)
 
 ## Use Cases:
 
-![Project UML](https://github.com/paulo-granthon/bertoti/blob/main/Engenharia%20de%20Software/pulgas/docs/pulgas_use_cases.png)
+![Project UML](/Engenharia%20de%20Software/pulgas/docs/pulgas_use_cases.png)

@@ -36,7 +36,7 @@ public class Dog {
             Flea pulga = pulgas.get(i);
             if (pulga.update(yard, randGen)) continue;
             pulgas.remove(pulga);
-            yard.addPulga(pulga);
+            yard.addFlea(pulga);
             i--;
         }
         
@@ -76,7 +76,7 @@ public class Dog {
 
     private void flee (Yard yard) {
         for (Flea pulga : pulgas) {
-            yard.addPulga(pulga);
+            yard.addFlea(pulga);
         }
     }
 
@@ -86,7 +86,7 @@ public class Dog {
             if (!randGen.happens(101, chance)) continue;
             Flea flea = pulgas.get(i);
             pulgas.remove(flea);
-            yard.addPulga(flea);
+            yard.addFlea(flea);
             fleasRemoved++;
             i--;
         }

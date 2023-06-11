@@ -15,19 +15,19 @@ public class Flea {
     public boolean update (Yard yard, RandGen randGen) {
         if (hunger >= 100) return false;
         hunger += 1;
-        if (!sugar()) return pular(yard, randGen);
+        if (!suck()) return jump(yard, randGen);
         return true;
     }
 
-    public boolean sugar () {
+    public boolean suck () {
         if (hostDog == null) return false;
         hostDog.changeHumor(-3);
         hunger -= 1;
         return true;
     }
 
-    public boolean pular (Yard yard, RandGen randGen) { return pular(yard, 0, randGen); }
-    public boolean pular (Yard yard, int chance, RandGen randGen) {
+    public boolean jump (Yard yard, RandGen randGen) { return jump(yard, 0, randGen); }
+    public boolean jump (Yard yard, int chance, RandGen randGen) {
         if (chance == 0) chance = hunger;
         boolean removed = false;
         // System.out.println("flea has " + yard.getDogs().size() + " possible dogs to jump to");

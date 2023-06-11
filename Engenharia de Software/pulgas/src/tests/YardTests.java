@@ -15,10 +15,10 @@ public class YardTests {
     public void testAddAndRemovePulga() {
         Yard quintal = new Yard(new RandGen());
         Flea pulga = new Flea("Test Pulga");
-        quintal.addPulga(pulga);
+        quintal.addFlea(pulga);
         assertTrue(quintal.getFleas().contains(pulga));
 
-        boolean result = quintal.removePulga(pulga);
+        boolean result = quintal.removeFlea(pulga);
         assertTrue(result);
         assertFalse(quintal.getFleas().contains(pulga));
     }
@@ -27,10 +27,10 @@ public class YardTests {
     public void testAddAndRemoveCachorro() {
         Yard quintal = new Yard(new RandGen());
         Dog cachorro = new Dog("Test Dog", Race.randomRace(new RandGen()));
-        quintal.addCachorro(cachorro);
+        quintal.addDog(cachorro);
         assertTrue(quintal.getDogs().contains(cachorro));
 
-        boolean result = quintal.removeCachorro(cachorro);
+        boolean result = quintal.removeDog(cachorro);
         assertTrue(result);
         assertFalse(quintal.getDogs().contains(cachorro));
     }

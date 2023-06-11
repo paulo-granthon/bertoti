@@ -41,7 +41,7 @@ public class FleaTests {
 
     @Test
     public void sugar_WhenDogIsNull_ReturnsFalse() {
-        flea.setHostDog(null);assertFalse(flea.sugar());
+        flea.setHostDog(null);assertFalse(flea.suck());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class FleaTests {
         flea.setHunger(0);
         flea.setHostDog(new Dog(randGen));
 
-        assertTrue(flea.sugar());
+        assertTrue(flea.suck());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class FleaTests {
         
         int dogPreviousHappiness = testDog.getHappiness();
 
-        assertTrue(flea.sugar());
+        assertTrue(flea.suck());
         assertEquals(initialHunger - 1, flea.getHunger());
         assertEquals(dogPreviousHappiness - 3, testDog.getHappiness());
     }
@@ -76,7 +76,7 @@ public class FleaTests {
         flea.setHostDog(testDog);
 
         RandGen mockRandGen = new MockRandGen(false);
-        flea.pular(yard, mockRandGen);
+        flea.jump(yard, mockRandGen);
 
         assertFalse(testDog.hasPulga(flea));
     }
@@ -90,7 +90,7 @@ public class FleaTests {
         flea.setHostDog(testDog);
 
         RandGen mockRandGen = new MockRandGen(true);
-        flea.pular(yard, 50, mockRandGen);
+        flea.jump(yard, 50, mockRandGen);
 
         int dogsHaveThisFlea = 0;
 
@@ -111,7 +111,7 @@ public class FleaTests {
         flea.setHostDog(testDog);
 
         RandGen mockRandGen = new MockRandGen(false);
-        flea.pular(yard, 50, mockRandGen);
+        flea.jump(yard, 50, mockRandGen);
 
         assertFalse(testDog.hasPulga(flea));
     }

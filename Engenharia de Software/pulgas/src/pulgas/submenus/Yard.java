@@ -11,36 +11,36 @@ import pulgas.utils.RandGen;
 
 public class Yard {
 
-    private static int PULGAS_INIT = 25;
-    private static int addPulgaCD = 60;
+    private static final int PULGAS_INIT = 25;
+    private static final int ADD_FLEA_CD = 60;
     private int addPulgaTimer = 0;
     private List<Dog> dogs = new LinkedList<Dog>();
     private List<Flea> fleas = new LinkedList<Flea>();
 
     public Yard (RandGen randGen) {        
         for (int i = 0; i < PULGAS_INIT; i++) {
-            addPulga(new Flea(Names.RandomDogName(randGen)));
+            addFlea(new Flea(Names.RandomDogName(randGen)));
         }
     }
 
     public void update (RandGen randGen) {
 
-        if (addPulgaTimer >= addPulgaCD) {
+        if (addPulgaTimer >= ADD_FLEA_CD) {
             System.out.println("Nova Pulga adicionada! |  Pulgas " + (fleas.size() - 1) + " -> " + fleas.size());
-            addPulga(new Flea(Names.RandomDogName(randGen)));
-            addPulgaTimer -= addPulgaCD;
+            addFlea(new Flea(Names.RandomDogName(randGen)));
+            addPulgaTimer -= ADD_FLEA_CD;
         }
         
         else addPulgaTimer += 1;
         
         for (int i = 0; i < fleas.size(); i++) {
-            Flea pulga = fleas.get(i);
-            if (pulga.update(this, randGen)) continue;
+            Flea flea = fleas.get(i);
+            if (flea.update(this, randGen)) continue;
             System.out.println(
-                "A pulga " + pulga.getName() + 
+                "A flea " + flea.getName() + 
                 " morreu de fome | Pulgas " + fleas.size() + " -> " + (fleas.size() - 1)
             );
-            removePulga(pulga);
+            removeFlea(flea);
             i--;
         }
         
@@ -52,32 +52,32 @@ public class Yard {
                 " estava " + Happiness.overallHappiness(cachorro.getHappiness(), false, false) + 
                 " e fugiu! | Cachorros: " + dogs.size() + " -> " + (dogs.size() - 1)
             );
-            removeCachorro(cachorro);
+            removeDog(cachorro);
             i--;
         }
 
     }
 
-    public void addPulga (Flea pulga) {
-        fleas.add(pulga);
+    public void addFlea (Flea flea) {
+        fleas.add(flea);
     }
 
-    public boolean removePulga (Flea p) {
-        for (Flea pulga : fleas) {
-            if (pulga != p) continue;
+    public boolean removeFlea (Flea p) {
+        for (Flea flea : fleas) {
+            if (flea != p) continue;
             fleas.remove(p);
             return true;
         }
         return false;
     }
 
-    public void addCachorro (Dog cachorro) {
-        dogs.add(cachorro);
+    public void addDog (Dog dog) {
+        dogs.add(dog);
     }
 
-    public boolean removeCachorro (Dog p) {
-        for (Dog cachorro : dogs) {
-            if (cachorro != p) continue;
+    public boolean removeDog (Dog p) {
+        for (Dog dog : dogs) {
+            if (dog != p) continue;
             dogs.remove(p);
             return true;
         }

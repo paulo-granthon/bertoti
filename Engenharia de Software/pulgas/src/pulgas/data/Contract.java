@@ -29,7 +29,7 @@ public class Contract {
     }
 
     public static Contract[] randomArray (RandGen randGen) { return randomArray(randGen, 0); }
-    public static Contract[] randomArray (RandGen randGen, int currentCount) {
+    private static Contract[] randomArray (RandGen randGen, int currentCount) {
         if (randGen.happens(0, 100, 30)) return randomArray(randGen, currentCount + 1);
         Contract[] contracts = new Contract[currentCount];
         for (int i = 0; i < currentCount; i++) {

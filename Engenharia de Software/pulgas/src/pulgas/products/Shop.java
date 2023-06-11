@@ -27,8 +27,8 @@ public class Shop {
 
     public void addRandomProduct (RandGen randGen) {
         addProduct(new ProductData(
-            Shampoo.random(randGen),
-            randGen.randInt(1, 4)
+            Product.randomProduct(randGen),
+            randGen.randInt(1, 5)
         ));
     }
 

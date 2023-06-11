@@ -9,11 +9,12 @@ import pulgas.data.AcceptedContract;
 import pulgas.data.Contract;
 import pulgas.data.ContractResult;
 import pulgas.entities.Dog;
-import pulgas.main.Stock;
-import pulgas.main.Yard;
 import pulgas.products.ProductData;
 import pulgas.products.Shampoo;
 import pulgas.products.Shop;
+import pulgas.products.Toy;
+import pulgas.submenus.Stock;
+import pulgas.submenus.Yard;
 import pulgas.utils.Ascii;
 import pulgas.utils.Happiness;
 import pulgas.utils.RandGen;
@@ -194,7 +195,11 @@ public class Main {
         );
         List<Shampoo> shampoos = stock.getShampoos();
         for (int i = 0; i < shampoos.size(); i++) {
-            sb.append("\n ").append(shampoos.get(i).getName());
+            sb.append("\n Shampoo: ").append(shampoos.get(i).getName());
+        }
+        List<Toy> toys = stock.getToys();
+        for (int i = 0; i < toys.size(); i++) {
+            sb.append("\n Brinquedo: ").append(toys.get(i).getName());
         }
         System.out.println(sb.append("\n0 - Voltar").toString());
         try {
@@ -234,21 +239,47 @@ public class Main {
         System.out.println(Ascii.dog(dog.getRace()));
         System.out.println(
             new StringBuilder("O que gostaria de fazer?")
-            .append("\n1 - Dar banho em ").append(dog.getName())
-            .append("\n2 - Fazer carinho em ").append(dog.getName())
+            .append("\n1 - Fazer carinho em ").append(dog.getName())
+            .append("\n2 - Dar brinquedo para ").append(dog.getName())
+            .append("\n3 - Dar banho em ").append(dog.getName())
             .append("\n0 - Voltar")
         .toString());
         try {
             switch (scanner.nextInt()) {
                 case 0: actions--; break;
-                case 1: giveBath(dog); break;
-                case 2: pet(dog); break;
+                case 1: pet(dog); break;
+                case 2: giveToy(dog); break;
+                case 3: giveBath(dog); break;
                 default: throw new Exception("Comando Inválido");
             }
         } catch (Exception e) {
             checkInput();
         }
     }
+
+    // private static void giveToy (Dog dog) {
+    //     Optional<Toy> shampooOptional = chooseToy();
+    //     int actualUses = 1;
+    //     double shampooQuality = 0.5;
+    //     double shampooSmell = 0.5;
+    //     if (shampooOptional.isPresent()) {
+    //         Toy shampoo = shampooOptional.get();
+    //         shampooQuality = shampoo.getQuality();
+    //         shampooSmell = shampoo.getSmell();
+    //         int shampooUses = chooseNumber("Quanto gostaria de usar?", 1, Math.min(4, shampoo.getUses()));
+    //         actualUses = shampoo.use(shampooUses);
+    //         if (shampoo.getUses() == 0) System.out.println("O Shampoo " + shampoo.getName() + " acabou!");
+    //         if (actualUses != shampooUses) System.out.println(
+    //             "Não tinha Shampoo suficiente para " + shampooUses + 
+    //             " usos! Usando " + actualUses + " de Shampoo."
+    //         );
+    //         System.out.println("Usando " + actualUses + " de Shampoo.");
+    //     }
+
+    //     dog.takeBath(shampooQuality * actualUses, shampooSmell * actualUses, yard, randGen);
+    //     actions--;
+    // }
+
 
     private static void giveBath (Dog dog) {
         Optional<Shampoo> shampooOptional = chooseShampoo();

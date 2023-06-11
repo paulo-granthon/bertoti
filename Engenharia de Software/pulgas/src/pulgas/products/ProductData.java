@@ -1,11 +1,11 @@
 package pulgas.products;
 
 public class ProductData {
-    private Shampoo product;
+    private Product product;
     private int stock;    
     private int daysInStock;
 
-    public ProductData(Shampoo product, int stock) {
+    public ProductData(Product product, int stock) {
         this.product = product;
         this.stock = stock;
     }
@@ -27,7 +27,7 @@ public class ProductData {
 
     public String getName () { return product.getName(); }
 
-    public Shampoo getProduct() { return product; }
+    public Product getProduct() { return product; }
 
     public int getStock() { return stock; }
     public int getDaysInStock() { return daysInStock; }

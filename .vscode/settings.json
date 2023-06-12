@@ -5,5 +5,22 @@
     ],
     "java.project.referencedLibraries": [
         "Engenharia de Software\\pulgas\\lib/**/*.jar"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#060638",
+        "activityBar.activeBorder": "#900f0f",
+        "activityBar.background": "#060638",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#900f0f",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "statusBar.background": "#01010a",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#060638",
+        "titleBar.activeBackground": "#01010a",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#01010a99",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#01010a"
 }

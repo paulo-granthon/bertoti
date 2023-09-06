@@ -7,12 +7,17 @@ const Coffee = ({ coffee }) => {
     )
 }
 
-export const Coffees = ({ coffees }) => {
+export default function Coffees ({ coffees }) {
     return (
         <div>
-            <ul>
-                {coffees.map((coffee) => <Coffee name={coffee.name} />)}
-            </ul>
+            {coffees != null ? (
+                <ul>
+                    {coffees.map((coffee, i) => <Coffee key={i} coffee={coffee} />)}
+                </ul>
+            ) : (
+                <p>Loading coffees...</p>
+            )}
         </div>
     )
 }
+

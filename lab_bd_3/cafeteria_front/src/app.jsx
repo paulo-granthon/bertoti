@@ -1,5 +1,5 @@
 import './app.css'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import Coffees from './components/Coffees'
 
@@ -14,11 +14,10 @@ export function App() {
     useEffect(() => {
         fetchCoffees()
             .then((response) => {
-                console.log(response);
                 setCoffees(response);
             })
             .catch((error) => console.error('Error fetching coffees:', error));
-    });
+    }, []);
 
     return (
         <>

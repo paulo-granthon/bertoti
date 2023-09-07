@@ -2,10 +2,12 @@ import './app.css'
 import { useState, useEffect } from 'react'
 
 import Coffees from './components/Coffees'
+import Form from './components/Form'
 
 
 import {
     fetchCoffees,
+    postCoffee,
 } from './services/ApiService';
 
 export function App() {
@@ -21,6 +23,7 @@ export function App() {
 
     return (
         <>
+            <Form postCoffee={postCoffee} />
             <Coffees coffees={coffees} />
         </>
     );

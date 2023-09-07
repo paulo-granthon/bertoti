@@ -1,21 +1,21 @@
 
 const Coffee = ({ coffee }) => {
     return (
-        <div>
-            <p>{coffee.name}</p>
+        <div className="coffee-container">
+            <p className="coffee-name">{coffee.name}</p>
         </div>
     )
 }
 
 export default function Coffees ({ coffees }) {
     return (
-        <div>
+        <div className="coffees-container">
             {coffees != null ? (
-                <ul>
+                <ul className="coffees-ul">
                     {coffees.map((coffee, i) => <Coffee key={i} coffee={coffee} />)}
                 </ul>
             ) : (
-                <p>Loading coffees...</p>
+                <p className="coffees-ul-loading">Loading coffees...</p>
             )}
         </div>
     )

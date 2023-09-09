@@ -10,3 +10,13 @@ export async function fetchCoffees() {
         console.error('API -- Error fetching coffees:', error);
     }
 }
+
+export async function postCoffee (coffee) {
+    try {
+        const response = await axios.post(coffee, {
+            coffee
+        });
+    } catch (error) {
+        console.error('API -- Error posting coffee ', coffee, error);
+    }
+}

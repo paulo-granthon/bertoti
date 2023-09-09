@@ -29,13 +29,3 @@ export async function postCoffee(coffee) {
         return error;
         }
 }
-
-export async function postCoffee (coffee) {
-    try {
-        const response = await axios.post(coffee, {
-            coffee
-        });
-    } catch (error) {
-        console.error('API -- Error posting coffee ', coffee, error);
-    }
-}

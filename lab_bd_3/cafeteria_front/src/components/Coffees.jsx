@@ -12,7 +12,7 @@ export default function Coffees ({ coffees }) {
         <div className="coffees-container">
             {coffees != null ? (
                 <ul className="coffees-ul">
-                    {coffees.map((coffee, i) => <Coffee key={i} coffee={coffee} />)}
+                    {coffees.map(coffee => <Coffee key={coffee.id} coffee={coffee} />)}
                 </ul>
             ) : (
                 <p className="coffees-ul-loading">Loading coffees...</p>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { postCoffee } from '../services/ApiService';
 
-export default function Form ( postCoffee ) {
+export default function Form ({ callback }) {
     const [coffeeName, setCoffeeName] = useState();
 
     function handleChange(event) {
@@ -8,10 +9,9 @@ export default function Form ( postCoffee ) {
     }
 
     function handleSubmit(event) {
-        // this.state.value
-        console.log(coffeeName)
-        postCoffee({ coffee: { name: coffeeName } });
+        postCoffee({ name: coffeeName });
         event.preventDefault();
+        callback();
     }
 
     return (

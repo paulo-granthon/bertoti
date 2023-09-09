@@ -9,21 +9,26 @@ import {
     fetchCoffees,
     postCoffee,
 } from './services/ApiService';
+import Form from './components/Form';
 
 export function App() {
     const [coffees, setCoffees] = useState();
 
-    useEffect(() => {
+    const postCoffeeCallback = () => {
         fetchCoffees()
-            .then((response) => {
-                setCoffees(response);
-            })
-            .catch((error) => console.error('Error fetching coffees:', error));
+        .then((response) => {
+            setCoffees(response);
+        })
+        .catch((error) => console.error('Error fetching coffees:', error));
+    }
+
+    useEffect(() => {
+        postCoffeeCallback();
     }, []);
 
     return (
         <>
-            <Form postCoffee={postCoffee} />
+            <Form callback={postCoffeeCallback}/>
             <Coffees coffees={coffees} />
         </>
     );

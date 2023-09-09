@@ -2,14 +2,11 @@ import './app.css'
 import { useState, useEffect } from 'react'
 
 import Coffees from './components/Coffees'
-import Form from './components/Form'
-
+import Form from './components/Form';
 
 import {
     fetchCoffees,
-    postCoffee,
 } from './services/ApiService';
-import Form from './components/Form';
 
 export function App() {
     const [coffees, setCoffees] = useState();

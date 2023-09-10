@@ -11,7 +11,7 @@ import {
 export function App() {
     const [coffees, setCoffees] = useState();
 
-    const postCoffeeCallback = () => {
+    const onChangeCoffeeCallback = () => {
         fetchCoffees()
         .then((response) => {
             setCoffees(response);
@@ -20,13 +20,13 @@ export function App() {
     }
 
     useEffect(() => {
-        postCoffeeCallback();
+        onChangeCoffeeCallback();
     }, []);
 
     return (
         <>
-            <Form callback={postCoffeeCallback}/>
-            <Coffees coffees={coffees} />
+            <Form onChange={onChangeCoffeeCallback} />
+            <Coffees coffees={coffees} onChange={onChangeCoffeeCallback} />
         </>
     );
 }

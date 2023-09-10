@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { postCoffee } from '../services/ApiService';
 
-export default function Form ({ callback }) {
+export default function Form ({ onChange }) {
     const [coffeeName, setCoffeeName] = useState();
 
     function handleChange(event) {
@@ -9,9 +9,9 @@ export default function Form ({ callback }) {
     }
 
     function handleSubmit(event) {
-        postCoffee({ name: coffeeName });
         event.preventDefault();
-        callback();
+        postCoffee({ name: coffeeName });
+        onChange();
     }
 
     return (

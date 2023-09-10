@@ -8,7 +8,7 @@ export default function Coffees ({ coffees, onChange }) {
                     {coffees.map(coffee => <Coffee key={coffee.id} coffee={coffee} onChange={onChange} />)}
                 </ul>
             ) : (
-                <p className="coffees-ul-loading">Loading coffees...</p>
+                <p className="coffees-ul coffees-ul-loading">Loading coffees...</p>
             )}
         </div>
     )

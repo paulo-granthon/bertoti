@@ -1,26 +1,4 @@
-
-const Coffee = ({ coffee, onChange }) => {
-    const removeCoffee = () => {
-        const coffeeId = coffee.id;
-        console.log('coffeeId: ', coffee);
-        fetch(`http://localhost:8080/coffees/${coffeeId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        .then(() => onChange())
-        .catch((error) => {
-            console.error('Error deleting coffee:', error);
-        });
-    };
-    return (
-        <div className="coffee-container">
-            <p className="coffee-name">{coffee.name}</p>
-            <p className="coffee-remove" onClick={removeCoffee}>X</p>
-        </div>
-    )
-}
+import Coffee from './Coffee';
 
 export default function Coffees ({ coffees, onChange }) {
     return (

@@ -1,9 +1,10 @@
 .coffees-container {
-
+  gap: 1em;
 }
 
 .coffees-ul {
-
+  margin: 0;
+  padding: 0;
 }
 
 .coffees-ul-loading {
@@ -11,14 +12,25 @@
 }
 
 .coffee-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 1em;
 
 }
 
-.coffee-name {
+.coffee-data {
+  display: flex;
+  justify-content: space-between;
+  background: black;
+  border-radius: 16px;
+  margin: 0.25rem 0;
+  padding: 0.25em;
+}
 
+.coffee-data > * {
+  margin: 0;
+  margin: 0.25em;
+}
+
+.coffee-name {
+  min-width: 12rem;
 }
 
 .coffee-form {

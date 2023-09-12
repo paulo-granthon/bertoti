@@ -1,3 +1,29 @@
+.app {
+  margin: 3em;
+}
+
+.coffee-form-container {
+  margin: 1em 0.5rem;
+}
+
+.coffee-form {
+
+}
+
+.form-label {
+
+}
+
+.form-input-text,
+.form-input-submit {
+  font-size: 8px;
+  padding: 0;
+  margin: 0;
+  height: 2rem;
+  border-radius: 8px;
+}
+
+
 .coffees-container {
   gap: 1em;
 }
@@ -19,7 +45,7 @@
   display: flex;
   justify-content: space-between;
   background: black;
-  border-radius: 16px;
+  border-radius: 8px;
   margin: 0.25rem 0;
   padding: 0.25em;
 }
@@ -31,20 +57,4 @@
 
 .coffee-name {
   min-width: 12rem;
-}
-
-.coffee-form {
-
-}
-
-.form-label {
-
-}
-
-.form-input-text {
-
-}
-
-.form-input-submit {
-
 }

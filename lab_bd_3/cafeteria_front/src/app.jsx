@@ -24,9 +24,9 @@ export function App() {
     }, []);
 
     return (
-        <>
+        <div className="app">
             <Form onChange={onChangeCoffeeCallback} />
             <Coffees coffees={coffees} onChange={onChangeCoffeeCallback} />
-        </>
+        </div>
     );
 }

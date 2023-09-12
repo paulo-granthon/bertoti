@@ -7,6 +7,7 @@ import {
 const Coffee = ({ coffee, onChange }) => {
     const [editing, setEditing] = useState(false);
     const [coffeeName, setCoffeeName] = useState(coffee.name);
+    const [originalName, setOriginalName] = useState(coffee.name);
 
     const toggleEditing = () => {
         setEditing(true);
@@ -29,8 +30,23 @@ const Coffee = ({ coffee, onChange }) => {
         event.preventDefault();
         console.log('renameCoffee:', coffee.name, '>', coffeeName);
         coffee.name = coffeeName;
+        setOriginalName(coffeeName);
         putCoffee(coffee)
         setEditing(false);
+    }
+
+    const cancelEditing = (event) => {
+        setCoffeeName(originalName);
+        setEditing(false);
+    }
+
+    const handleCommands = (event) => {
+        if (event.key === 'Escape') {
+            cancelEditing(event);
+        }
+        if (event.key === 'Enter') {
+            renameCoffee(event);
+        }
     }
 
     return (
@@ -42,8 +58,16 @@ const Coffee = ({ coffee, onChange }) => {
                 </div>
             ) : (
                 <div className="coffee-editing">
-                    <input className="coffee-editing-text" type="text" value={coffeeName} onChange={handleChange} autofocus/>
+                    <input
+                        className="coffee-editing-text"
+                        type="text"
+                        value={coffeeName}
+                        onChange={handleChange}
+                        onKeyDown={handleCommands}
+                        autofocus={true}
+                    />
                     <button type="submit" onClick={renameCoffee}>Ok</button>
+                    <button type="submit" onClick={cancelEditing}>Cancel</button>
                 </div>
             )}
         </div>

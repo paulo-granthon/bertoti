@@ -38,10 +38,8 @@ public class Inheritance {
   }
 
   public static void main(String[] args) {
-    Inheritance inheritance = new Inheritance();
-
-    Professor professor = inheritance.new Professor();
-    Estudante estudante = inheritance.new Estudante();
+    Professor professor = new Professor();
+    Estudante estudante = new Estudante();
 
     System.out.println(professor.emprestar("caneta"));
     System.out.println(estudante.emprestar("caneta"));

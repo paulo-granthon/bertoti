@@ -52,12 +52,10 @@ public class Inheritance {
   }
 
   public static void main(String[] args) {
-    Inheritance inheritance = new Inheritance();
-
-    Pessoa professor = inheritance.new Pessoa();
+    Pessoa professor = new Pessoa();
     professor.setEmprestarBehavior(inheritance.new Professor());
 
-    Pessoa estudante = inheritance.new Pessoa();
+    Pessoa estudante = new Pessoa();
     estudante.setEmprestarBehavior(inheritance.new Estudante());
 
     System.out.println(professor.emprestar("caneta"));

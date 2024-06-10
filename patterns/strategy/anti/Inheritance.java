@@ -1,42 +1,49 @@
 package strategy.anti;
 
-public class Inheritance {
-  public class Client {
-    String name;
-    String address;
-    String phone;
-    String email;
+import com.sun.tools.javac.util.List;
 
-    public void emprestar() {
-      System.out.println("Pô mano, implementa o `emprestar` ta ligago?");
+public class Inheritance {
+  public class Pessoa {
+    public String emprestar(String item) {
+      System.out.println("Não tenho, foi mal :/");
+    }
+  }
+
+  public class Professor {
+    public List<String> itensNãoEmprestáveis = new List<String>();
+
+    @Override
+    public String emprestar(String item) {
+      return super.emprestar(item);
     }
   }
 
   public class Estudante extends Client {
-    String ra;
-    String curso;
+    public List<String> estojo = new List<String>();
+
+    public Estudante() {
+      estojo.add("caneta");
+      estojo.add("lápis");
+      estojo.add("borracha");
+    }
 
     @Override
-    public void emprestar() {
-      System.out.println("Eu n empresto, eu pego emprestado!");
-    }
-  }
+    public String emprestar(String item) {
+      if (estojo.contains(item)) {
+        return "Empresto o " + item + " pra você sim, meu mano!";
+      }
 
-  public class Common extends Client {
-    public void emprestar() {
-      System.out.println();
+      super.emprestar(item);
     }
   }
 
   public static void main(String[] args) {
     Inheritance inheritance = new Inheritance();
 
-    Inheritance.Client c = inheritance.new Client();
-    System.out.println("Client emprestar:");
-    c.emprestar();
+    Professor professor = inheritance.new Professor();
+    Estudante estudante = inheritance.new Estudante();
 
-    Inheritance.Estudante e = inheritance.new Estudante();
-    System.out.println("Estudante emprestar:");
-    e.emprestar();
+    System.out.println(professor.emprestar("caneta"));
+    System.out.println(estudante.emprestar("caneta"));
   }
 }

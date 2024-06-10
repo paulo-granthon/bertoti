@@ -1,6 +1,6 @@
 package strategy.anti;
 
-import com.sun.tools.javac.util.List;
+import com.util.List;
 
 public class Inheritance {
   public class Pessoa {

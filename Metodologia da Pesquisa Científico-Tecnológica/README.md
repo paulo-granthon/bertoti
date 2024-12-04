@@ -31,7 +31,7 @@ Sistema desenvolvido para auxiliar na gestão eficiente das horas trabalhadas pe
 
 **Conhecimentos exercitados:** `Java` `Spring`
 
-Adicionei as entidades: User, Client, Appointment, PayRateRule, e os enums necessários. Essa contribuição foi composta por uma revisão do código JavFX do semestre anterior para garantir a compatibilidade com a arquitetura do terceiro semestre. Alguns pontos foram atualizados para seguir a nova arquitetura.
+Adicionei as entidades: User, Client, Appointment, PayRateRule, e os enums necessários. Essa contribuição foi composta por uma revisão do código JavaFX do semestre anterior para garantir a compatibilidade com a arquitetura do terceiro semestre. Alguns pontos foram atualizados para seguir a nova arquitetura.
 
 #### Dockerização do projeto
 

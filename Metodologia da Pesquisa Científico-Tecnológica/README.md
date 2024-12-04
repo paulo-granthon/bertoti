@@ -13,6 +13,108 @@ Backend developer intern at @gorilainvest | Database technologist student at FAT
 Projects
 --------
 
+### [Khali](https://github.com/projetoKhali/Khali)
+
+**Empresa:** FATEC
+
+**Semestre:** 1º Sem
+
+#### Descrição
+
+Plataforma Khali, que possibilita a aplicação do método de Avaliação 360° à Instituição de Ensino fictícia PBLTeX
+
+#### Tecnologias
+
+- Python
+- Tkinter
+- Git
+- GitHub
+- Bcrypt
+- Numpy
+
+#### Contribuições
+
+##### CSVHandler
+
+Módulo responsável por manipular arquivos CSV, permitindo a leitura e escrita de dados em arquivos CSV. O módulo foi desenvolvido para facilitar a importação e exportação de dados do sistema, permitindo a persistência de dados em arquivos CSV.
+
+##### ModulesManager
+
+Módulo responsável por gerenciar os módulos do sistema, permitindo a definição de telas do sistema, navegação entre telas e permissionamento de acesso. O módulo foi desenvolvido para facilitar a adição de novas telas ao sistema, permitindo a criação de forma modular.
+
+##### Charts
+
+Implementei os tipos básicos de gráfico para serem instanciados no sistema, permitindo a visualização de dados de forma gráfica. Com base neles, desenvolvi funções que instanciam gráficos específicos exibindo diversas métricas.
+
+##### EditTeam
+
+Tela responsável pela edição de equipes, permitindo a inclusão, edição e exclusão de equipes. A tela permite a inclusão e exclusão de membros de uma equipe, bem como a definição de um líder para a equipe e utiliza uma lista temporária no formulário de criação contendo os membros a serem incluídos ao criar a equipe.
+
+##### Profile
+
+Tela responsável por exibir o perfil do usuário logado, permitindo a visualização dos gráficos de avaliação 360° do usuário. A tela exibe a média das pontuações recebidas pelo usuário em cada uma das dimensões avaliadas, a lista de feedbacks recebidos e a evolução das pontuações do usuário ao longo do tempo.
+
+#### Aprendizados Efetivos
+
+- Desenvolvimento de aplicações desktop
+- Manipulação de arquivos CSV
+- Modularização e arquitetura de sistemas
+- Desenvolvimento de gráficos
+- Desenvolvimento de telas de edição e visualização de dados
+
+### [API2Semestre](https://github.com/projetoKhali/API2Semestre)
+
+**Empresa:** 2RP
+
+**Semestre:** 2º Sem
+
+Sistema desktop para apontamento de horas extras e sobreavisos pelo colaborador, e controle pelo gestor (PO) e administrador (RH e Financeiro). 
+
+#### Tecnologias
+
+- Java
+- JavaFX
+- SceneBuilder
+- PostgreSQL
+- Git
+- GitHub
+- Railway
+
+#### Contribuições
+
+##### Classe Query & QueryLibs
+
+Biblioteca de queries SQL para o banco de dados PostgreSQL, contendo as queries necessárias para a execução das operações do sistema. A biblioteca foi desenvolvida para suprir a necessidade que o sistema tinha de realizar operações no banco de dados por não possuir um ORM ou um framework de persistência de dados dedicado (conforme orientação).
+
+A implementação foi feita de forma modular e estáticamente tipada, utilizando Enums para a definição das operações, tabelas e colunas dessas tabelas e a classe Query para a construção de queries parametrizadas.
+
+##### Sistema de permissões e controle de acesso às telas
+
+Implementei um sistema de permissões de acesso às telas do sistema, baseado em regras de acesso por perfil de usuário. As permissões de acesso são definidas pelo perfil do usuário e também por uma análise dos dados do usuário. Por exemplo, o usuário de nível Colaborador, só pode efetuar apontamentos caso pertença a um ResultCenter, enquanto um usuário de nível Administrador pode acessar todas as telas do sistema.
+
+##### Tela de Avaliação de Apontamentos
+
+Desenvolvi a tela de Avaliação de Apontamentos do sistema, incluindo a tabela responsável pela listagem dos apontamentos efetuados pelos colaboradores. A tela permite a visualização dos apontamentos efetuados, a aprovação ou rejeição dos apontamentos e a inclusão de feedbacks para o colaborador do apontamento avaliado.
+
+##### Tela de Relatório
+
+Desenvolvi a tela de Relatório do sistema, incluindo a tabela responsável pela listagem dos apontamentos efetuados pelos colaboradores. A tela permite a visualização dos apontamentos efetuados, a filtragem dos apontamentos por data, a seleção de colunas a serem incluídas assim como a exportação dos dados para um arquivo CSV contendo apenas as colunas selecionadas dos apontamentos filtrados.
+
+##### Tela de Parametrização
+
+Desenvolvi a tela de Parametrização do sistema, responsável pela exibição e edição dos parâmetros do sistema, que residem em uma tabela de linha única no banco de dados. A tela permite a edição dos parâmetros do sistema, a visualização dos valores atuais e a persistência das alterações realizadas, garantindo a sincronização das regras de cálculo de horas extras e sobreavisos.
+
+##### LookUpTextField
+
+Desenvolvi o componente LookUpTextField, que permite a pesquisa em uma lista e reduzindo a quantidade de opções exibidas ao usuário ao selecionar um valor dentro de uma lista finita. A pesquisa é realizada em tempo real, filtrando os resultados conforme o usuário digita. O componente foi utilizado em diversas telas do sistema aonde a seleção de um valor existente entre muitos disponíveis é necessária.
+
+#### Aprendizados Efetivos
+
+- Desenvolvimento de aplicações desktop
+- Manipulação de banco de dados PostgreSQL
+- Desenvolvimento front-end com JavaFX
+- Arquitetura de sistemas
+
 ### api3
 
 **Empresa:** 2RP
